@@ -6281,10 +6281,10 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 
 .lumea-footer-brand {
   position: relative;
-  background: #0a0a08;
+  background: #0a0a08 url("images/cta.webp") center / cover no-repeat;
   overflow: hidden;
   height: clamp(10rem, 22vw, 20rem);
-  padding: 0 1rem;
+  padding: 0 clamp(1rem, 4vw, 2rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6294,7 +6294,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   position: relative;
   z-index: 1;
   font-family: "Clash Display", var(--mustard-font-heading);
-  font-size: clamp(6rem, 20vw, 18rem);
+  font-size: clamp(5rem, 18vw, 18rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -6316,7 +6316,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 }
 
 .lumea-footer-brand-imgfallback {
-  background-image: var(--mustard-footer-poster);
+  background-image: url("images/cta.webp");
   background-size: cover;
   background-position: center;
 }
@@ -6343,11 +6343,14 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
     width: min(100% - 2.5rem, var(--mustard-container));
   }
 
+  .lumea-footer-brand {
+    height: clamp(7.5rem, 28vw, 10rem);
+    padding-inline: 0.875rem;
+  }
+
   .lumea-footer-brand-text {
-    /* Previously clamp(4rem, 22vw, 8rem) — a *higher* vw multiplier
-       than the desktop rule, so on narrow phones "MUSTARD" grew wider
-       than its container and overflow:hidden clipped both sides. */
-    font-size: clamp(3.5rem, 15vw, 7rem);
+    font-size: min(15vw, 4.5rem);
+    letter-spacing: -0.035em;
   }
 }
 
