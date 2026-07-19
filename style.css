@@ -3979,22 +3979,41 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 }
 
 .lumea-occ-tag {
+  --lumea-occ-tag-inset: clamp(0.875rem, 2vw, 1.25rem);
+  --lumea-occ-tag-w: clamp(6.25rem, 8vw, 7.25rem);
+  --lumea-occ-tag-h: 3rem;
+  --lumea-occ-tag-gap: 0.5rem;
   position: absolute;
-  left: var(--tx);
-  top: var(--ty);
+  left: var(--lumea-occ-tag-inset);
+  top: auto;
+  bottom: var(--lumea-occ-tag-inset);
   z-index: 3;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.125rem;
-  padding: 0.5625rem 0.8125rem;
-  background: rgba(17, 17, 17, 0.72);
+  width: var(--lumea-occ-tag-w);
+  height: var(--lumea-occ-tag-h);
+  box-sizing: border-box;
+  padding: 0.5rem 0.6875rem;
+  overflow: hidden;
+  background: rgba(17, 17, 17, 0.74);
   backdrop-filter: blur(0.375rem);
   -webkit-backdrop-filter: blur(0.375rem);
-  border: 0.0625rem solid rgba(255, 255, 255, 0.18);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.26);
   border-radius: 0.375rem;
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.16);
   opacity: 0;
   transform: translateY(0.5rem);
   transition: opacity 0.45s ease 0.15s, transform 0.45s ease 0.15s;
+}
+
+.lumea-occ-slide > .lumea-occ-tag:nth-of-type(1) {
+  bottom: calc(var(--lumea-occ-tag-inset) + var(--lumea-occ-tag-h) + var(--lumea-occ-tag-gap));
+}
+
+.lumea-occ-slide > .lumea-occ-tag:nth-of-type(2) {
+  bottom: var(--lumea-occ-tag-inset);
 }
 
 .lumea-occ-slide.is-active .lumea-occ-tag {
@@ -4003,29 +4022,29 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 }
 
 .lumea-occ-tag::before {
-  content: "";
-  position: absolute;
-  left: 0.8125rem;
-  top: -0.25rem;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background: var(--mustard-accent);
-  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+  display: none;
+}
+
+.lumea-occ-tag::after {
+  display: none;
 }
 
 .lumea-occ-tag-name {
   font-family: Inter, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 600;
+  line-height: 1.2;
   color: #ffffff;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .lumea-occ-tag-price {
   font-family: "Courier New", monospace;
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 700;
+  line-height: 1.2;
   color: rgba(255, 255, 255, 0.72);
 }
 
@@ -4046,6 +4065,8 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 
 @media (max-width: 480px) {
   .lumea-occ-tag {
+    --lumea-occ-tag-w: 6rem;
+    --lumea-occ-tag-h: 2.75rem;
     padding: 0.4375rem 0.625rem;
   }
 
