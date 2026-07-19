@@ -3731,9 +3731,9 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   to { transform: rotate(360deg); }
 }
 
-/* Scrolling type strip along the bottom of the band */
+/* Scrolling type strip along the top of the band */
 .lumea-eos-marquee {
-  border-top: 0.0625rem solid var(--eos-hair);
+  border-bottom: 0.0625rem solid var(--eos-hair);
   padding: 1.125rem 0;
   overflow: hidden;
 }
