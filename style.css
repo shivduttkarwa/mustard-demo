@@ -9,7 +9,7 @@
   --mustard-muted: #7a6f5c;
   --mustard-accent: #c8961e;
   --mustard-accent-dark: #8f6a14;
-  --mustard-green: #9caf6e;
+  --mustard-green: #8f6a14;
   --mustard-border: rgba(42, 35, 24, 0.12);
 
   --mustard-radius: 1.5rem;
@@ -1456,7 +1456,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   top: 8.1rem;
   right: 1.9rem;
   margin: 0;
-  color: #9caf6e;
+  color: #c8961e;
   font-family: var(--mustard-font-heading);
   font-size: clamp(2rem, 3.4vw, 3.25rem);
   font-weight: 600;
@@ -2229,7 +2229,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   --mustard-black: #111111;
   --mustard-white: #ffffff;
   --mustard-soft: #f7f3ec;
-  --mustard-green: #9caf6e;
+  --mustard-green: #c8961e;
   --mustard-duration: 900ms;
   --mustard-ease: cubic-bezier(0.19, 1, 0.22, 1);
   width: 100%;
@@ -2531,7 +2531,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   width: 1.125rem;
   height: 1.125rem;
   border-radius: 50%;
-  background: #9caf6e;
+  background: #c8961e;
   color: #0e1410;
   font-family: Inter, sans-serif;
   font-size: 0.625rem;
@@ -5434,7 +5434,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 .lumea-fullcta-heading em {
   font-style: italic;
   font-weight: 400;
-  color: #9caf6e;
+  color: #c8961e;
 }
 
 .lumea-fullcta-btn {
@@ -5455,7 +5455,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 }
 
 .lumea-fullcta-btn:hover {
-  background: #9caf6e;
+  background: #c8961e;
   color: #13241d;
   gap: 1.125rem;
 }
