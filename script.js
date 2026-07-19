@@ -3569,82 +3569,37 @@
 
 } )();
 
-/* ===== manifest.js ===== */
-
-
+/* ===== occasion.js ===== */
 ( function () {
   'use strict';
 
-  const section = document.querySelector( '.lumea-manifest' );
-  if ( ! section ) return;
+  var list = document.querySelector( '[data-occ-list]' );
+  if ( ! list ) return;
 
-  const splitLines = section.querySelectorAll( '[data-split]' );
-  if ( ! splitLines.length ) return;
+  var items  = Array.prototype.slice.call( list.querySelectorAll( '[data-occ-item]' ) );
+  var slides = Array.prototype.slice.call( document.querySelectorAll( '[data-occ-slide]' ) );
+  if ( ! items.length || ! slides.length ) return;
 
-  
-  function splitLineToLetters( line, baseDelay, speed ) {
-    const text = line.textContent;
-    line.textContent = '';
-
-    let charCount = 0;
-    const words   = text.split( ' ' );
-
-    words.forEach( function ( word, wordIndex ) {
-      const wordSpan     = document.createElement( 'span' );
-      wordSpan.className = 'lumea-word';
-
-      word.split( '' ).forEach( function ( letter ) {
-        const char                = document.createElement( 'span' );
-        char.className            = 'lumea-char';
-        char.textContent          = letter;
-        char.style.animationDelay = ( baseDelay + charCount * speed ) + 's';
-        wordSpan.appendChild( char );
-        charCount++;
-      } );
-
-      line.appendChild( wordSpan );
-
-      if ( wordIndex !== words.length - 1 ) {
-        const space     = document.createElement( 'span' );
-        space.className = 'lumea-space';
-        space.textContent = '\u00a0';
-        line.appendChild( space );
-      }
+  function activate( index ) {
+    items.forEach( function ( item, i ) {
+      var isActive = i === index;
+      item.classList.toggle( 'is-active', isActive );
+      var tab = item.querySelector( '[data-occ-tab]' );
+      if ( tab ) tab.setAttribute( 'aria-selected', isActive ? 'true' : 'false' );
+    } );
+    slides.forEach( function ( slide, i ) {
+      slide.classList.toggle( 'is-active', i === index );
     } );
   }
 
-  splitLines.forEach( function ( line, index ) {
-    const isTitle   = !! line.closest( '.lumea-title' );
-    const baseDelay = isTitle ? 0.5 + index * 0.1 : 0.16 + index * 0.06;
-    const speed     = isTitle ? 0.022 : 0.014;
-    splitLineToLetters( line, baseDelay, speed );
-  } );
-
-  
-  const bgImages = section.querySelectorAll( '.lumea-manifest-bg img' );
-
-  if ( bgImages.length ) {
-    window.addEventListener( 'scroll', function () {
-      const rect     = section.getBoundingClientRect();
-      const progress = Math.min( Math.max( -rect.top / window.innerHeight, 0 ), 1 );
-      bgImages.forEach( function ( bgImage ) {
-        bgImage.style.objectPosition = 'center ' + ( 50 - progress * 4 ) + '%';
-      } );
-    }, { passive: true } );
-  }
-
-  
-  const observer = new IntersectionObserver( function ( entries, obs ) {
-    entries.forEach( function ( entry ) {
-      if ( ! entry.isIntersecting ) return;
-      section.classList.add( 'is-animated' );
-      obs.unobserve( section );
+  items.forEach( function ( item, index ) {
+    var tab = item.querySelector( '[data-occ-tab]' );
+    if ( ! tab ) return;
+    tab.addEventListener( 'click', function () {
+      if ( item.classList.contains( 'is-active' ) ) return;
+      activate( index );
     } );
-  }, {
-    threshold: 0.12
   } );
-
-  observer.observe( section );
 
 } )();
 
