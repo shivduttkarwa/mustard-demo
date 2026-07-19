@@ -3664,6 +3664,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: translateZ(0);
 }
 
 .lumea-eos-veil {
@@ -3689,15 +3690,15 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   pointer-events: none;
 }
 
+/* No backdrop-filter here on purpose: blurring the backdrop of a playing
+   video re-samples every frame and makes playback stutter. */
 .lumea-eos-sticker::before {
   content: "";
   position: absolute;
   inset: 1.5rem;
   border-radius: 50%;
-  background: rgba(23, 18, 10, 0.62);
+  background: rgba(23, 18, 10, 0.8);
   border: 0.0625rem solid rgba(245, 237, 218, 0.25);
-  backdrop-filter: blur(0.5rem);
-  -webkit-backdrop-filter: blur(0.5rem);
 }
 
 .lumea-eos-sticker svg {
@@ -3706,6 +3707,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   width: 100%;
   height: 100%;
   animation: lumeaEosSpin 22s linear infinite;
+  will-change: transform;
 }
 
 .lumea-eos-sticker svg text {
