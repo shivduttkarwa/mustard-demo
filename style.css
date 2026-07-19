@@ -3455,98 +3455,202 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 
 /* ===== End of Season Sale ===== */
 .lumea-eos {
+  --eos-ink: #17120a;
+  --eos-cream: #f5edda;
+  --eos-muted: rgba(245, 237, 218, 0.55);
+  --eos-hair: rgba(245, 237, 218, 0.16);
+  --eos-edge: rgba(245, 237, 218, 0.32);
+  --eos-gold: #d8a62c;
+  background: var(--eos-ink);
+  color: var(--eos-cream);
+  overflow: hidden;
+}
+
+.lumea-eos-main {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 36rem;
-  background: var(--mustard-bg);
+  grid-template-columns: 1.05fr 1fr;
+  min-height: clamp(30rem, 78vh, 44rem);
 }
 
 .lumea-eos-content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 4rem clamp(1.5rem, 5vw, 5rem);
-  /* Grid items default to min-width:auto, which lets content (the
-     Swiper carousel's percentage-based slides) force this track far
-     wider than the grid itself — min-width:0 is the standard fix. */
+  padding: 3.5rem clamp(1.5rem, 5vw, 5rem);
   min-width: 0;
 }
 
+.lumea-eos-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--eos-gold);
+  margin-bottom: 1.75rem;
+}
+
+.lumea-eos-eyebrow::before {
+  content: "";
+  width: 2.25rem;
+  height: 0.0625rem;
+  background: var(--eos-gold);
+}
+
 .lumea-eos-title {
-  margin: 0 0 0.875rem;
+  margin: 0 0 1rem;
   font-family: var(--mustard-font-heading);
-  font-size: clamp(2.25rem, 4vw, 3.375rem);
-  font-weight: 500;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  color: var(--mustard-text);
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--eos-cream);
+}
+
+.lumea-eos-line {
+  display: block;
+}
+
+.lumea-eos-line--outline {
+  color: transparent;
+  -webkit-text-stroke: 0.0625rem rgba(245, 237, 218, 0.65);
+}
+
+.lumea-eos-sub {
+  margin: 0 0 1.125rem;
+  font-family: var(--mustard-font-heading);
+  font-size: clamp(1.375rem, 2.2vw, 2rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--eos-gold);
+}
+
+.lumea-eos-chip {
+  display: inline-block;
+  margin-left: 0.875rem;
+  padding: 0.4375rem 0.875rem;
+  background: var(--eos-gold);
+  border-radius: 999px;
+  font-family: "Courier New", monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--eos-ink);
+  vertical-align: middle;
+  transform: translateY(-0.25em) rotate(-4deg);
 }
 
 .lumea-eos-desc {
   margin: 0 0 2.25rem;
-  max-width: 24rem;
+  max-width: 26rem;
   font-size: 1rem;
-  line-height: 1.6;
-  color: var(--mustard-muted);
+  line-height: 1.7;
+  color: var(--eos-muted);
 }
 
-.lumea-eos-swiper {
-  width: 100%;
-  max-width: 24rem;
-  margin-bottom: 1.25rem;
-  overflow: hidden;
-}
-
-.lumea-eos-swiper .swiper-wrapper {
-  align-items: stretch;
-}
-
-.lumea-eos-swiper .swiper-slide {
-  width: 31.3%;
-  aspect-ratio: 0.72;
-  border-radius: var(--mustard-radius);
-  overflow: hidden;
-}
-
-.lumea-eos-swiper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.lumea-eos-pagination {
-  position: static;
+/* Discount ladder — tier cells rise toward the best offer */
+.lumea-eos-tiers {
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
   width: 100%;
-  max-width: 24rem;
-  gap: 0.5rem;
-  margin-bottom: 2.25rem;
+  max-width: 28rem;
+  margin-bottom: 2.5rem;
 }
 
-.lumea-eos-pagination .swiper-pagination-bullet {
-  width: 0.5rem;
-  height: 0.5rem;
-  margin: 0;
-  background: var(--mustard-border);
-  opacity: 1;
-  border-radius: 50%;
-  transition: background 0.2s ease, transform 0.2s ease;
+.lumea-eos-tier {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.3125rem;
+  padding: 1rem 1.125rem 0.875rem;
+  border: 0.0625rem solid var(--eos-edge);
+  background: rgba(245, 237, 218, 0.05);
 }
 
-.lumea-eos-pagination .swiper-pagination-bullet-active {
-  background: var(--mustard-accent);
-  transform: scale(1.2);
+.lumea-eos-tier + .lumea-eos-tier {
+  margin-left: -0.0625rem;
+}
+
+.lumea-eos-tier--1 { height: 6rem; }
+.lumea-eos-tier--2 { height: 7.25rem; }
+
+.lumea-eos-tier--3 {
+  height: 8.5rem;
+  background: var(--eos-gold);
+  border-color: var(--eos-gold);
+}
+
+.lumea-eos-tier-pct {
+  font-family: var(--mustard-font-heading);
+  font-size: clamp(1.625rem, 2.4vw, 2.25rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--eos-cream);
+}
+
+.lumea-eos-tier--3 .lumea-eos-tier-pct {
+  color: var(--eos-ink);
+}
+
+.lumea-eos-tier-items {
+  font-family: "Courier New", monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--eos-muted);
+}
+
+.lumea-eos-tier--3 .lumea-eos-tier-items {
+  color: rgba(23, 18, 10, 0.7);
+}
+
+.lumea-eos-tier-tag {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  padding: 0.25rem 0.625rem;
+  background: var(--eos-cream);
+  color: var(--eos-ink);
+  font-family: "Courier New", monospace;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lumea-eos-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.375rem;
+}
+
+.lumea-eos-note {
+  font-family: "Courier New", monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--eos-muted);
 }
 
 .lumea-eos-media {
   position: relative;
   min-height: 22rem;
   min-width: 0;
-  overflow: hidden;
-  background: var(--mustard-text);
+  background: var(--eos-ink);
 }
 
 .lumea-eos-video {
@@ -3562,9 +3666,113 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   display: block;
 }
 
+.lumea-eos-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(23, 18, 10, 0.5) 0%, rgba(23, 18, 10, 0) 38%),
+    linear-gradient(0deg, rgba(23, 18, 10, 0.4) 0%, rgba(23, 18, 10, 0) 40%);
+  pointer-events: none;
+}
+
+/* Rotating sticker pinned to the seam between text and video */
+.lumea-eos-sticker {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 5;
+  width: 9.5rem;
+  height: 9.5rem;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.lumea-eos-sticker::before {
+  content: "";
+  position: absolute;
+  inset: 1.5rem;
+  border-radius: 50%;
+  background: rgba(23, 18, 10, 0.62);
+  border: 0.0625rem solid rgba(245, 237, 218, 0.25);
+  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+}
+
+.lumea-eos-sticker svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: lumeaEosSpin 22s linear infinite;
+}
+
+.lumea-eos-sticker svg text {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--eos-cream);
+}
+
+.lumea-eos-sticker-core {
+  position: relative;
+  font-family: var(--mustard-font-heading);
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  color: var(--eos-gold);
+}
+
+@keyframes lumeaEosSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Scrolling type strip along the bottom of the band */
+.lumea-eos-marquee {
+  border-top: 0.0625rem solid var(--eos-hair);
+  padding: 1.125rem 0;
+  overflow: hidden;
+}
+
+.lumea-eos-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: lumeaEosMarquee 30s linear infinite;
+}
+
+.lumea-eos-marquee-seg {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: var(--mustard-font-heading);
+  font-size: clamp(1.125rem, 1.8vw, 1.625rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--eos-cream);
+}
+
+.lumea-eos-marquee-seg i {
+  font-style: normal;
+  color: var(--eos-gold);
+  margin: 0 1.25rem;
+}
+
+@keyframes lumeaEosMarquee {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumea-eos-sticker svg,
+  .lumea-eos-marquee-track {
+    animation: none;
+  }
+}
+
 @media (max-width: 991.98px) {
-  .lumea-eos {
+  .lumea-eos-main {
     grid-template-columns: 1fr;
+    min-height: 0;
   }
 
   .lumea-eos-media {
@@ -3573,22 +3781,57 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   }
 
   .lumea-eos-content {
-    padding: 3rem 1.5rem;
+    padding: 3.25rem 1.5rem 3rem;
     align-items: center;
     text-align: center;
   }
 
   .lumea-eos-desc {
-    max-width: none;
+    max-width: 30rem;
   }
 
-  .lumea-eos-swiper,
-  .lumea-eos-pagination {
-    max-width: none;
+  .lumea-eos-tiers {
+    max-width: 26rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .lumea-eos-pagination {
-    justify-content: center;
+  .lumea-eos-tier {
+    text-align: left;
+  }
+
+  .lumea-eos-sticker {
+    left: auto;
+    right: 1.25rem;
+    top: auto;
+    bottom: 0;
+    transform: translateY(50%);
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .lumea-eos-sticker-core {
+    font-size: 1.375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lumea-eos-tier {
+    padding: 0.75rem 0.75rem 0.625rem;
+  }
+
+  .lumea-eos-tier--1 { height: 5.25rem; }
+  .lumea-eos-tier--2 { height: 6.25rem; }
+  .lumea-eos-tier--3 { height: 7.25rem; }
+
+  .lumea-eos-actions {
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .lumea-eos-chip {
+    font-size: 0.625rem;
+    padding: 0.3125rem 0.625rem;
   }
 }
 
