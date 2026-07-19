@@ -3686,14 +3686,8 @@
     slidesPerView: 3,
     spaceBetween:  12,
     speed:         500,
-    loop:          true,
+    loop:          false,
     grabCursor:    true,
-
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: true,
-      pauseOnMouseEnter: true,
-    },
 
     pagination: {
       el: '.lumea-eos-pagination',
