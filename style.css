@@ -3952,7 +3952,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 .lumea-occ-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: var(--mustard-radius);
   background: var(--mustard-bg);
@@ -4036,7 +4036,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 
   .lumea-occ-media {
     order: -1;
-    aspect-ratio: 4 / 3.4;
+    aspect-ratio: 25 / 17;
   }
 
   .lumea-occ-body > .lumea-occ-desc {
