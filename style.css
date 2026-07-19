@@ -6303,6 +6303,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   white-space: nowrap;
 }
 
+.lumea-footer-brand-media,
 .lumea-footer-brand-video,
 .lumea-footer-brand-imgfallback {
   position: absolute;
