@@ -4720,6 +4720,39 @@ function lumeaCreatePeelMedia( canvas, count ) {
   } );
 } )();
 
+/* ===== home faq ===== */
+( function () {
+  'use strict';
+
+  var sections = Array.prototype.slice.call( document.querySelectorAll( '[data-lumea-home-faq]' ) );
+  if ( ! sections.length ) return;
+
+  sections.forEach( function ( section ) {
+    var items = Array.prototype.slice.call( section.querySelectorAll( '.lumea-home-faq-item' ) );
+    if ( ! items.length ) return;
+
+    function setItem( item, open ) {
+      item.classList.toggle( 'is-open', open );
+      var button = item.querySelector( '.lumea-home-faq-question' );
+      if ( button ) button.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
+    }
+
+    items.forEach( function ( item ) {
+      setItem( item, item.classList.contains( 'is-open' ) );
+
+      var button = item.querySelector( '.lumea-home-faq-question' );
+      if ( ! button ) return;
+
+      button.addEventListener( 'click', function () {
+        var shouldOpen = ! item.classList.contains( 'is-open' );
+        items.forEach( function ( otherItem ) {
+          setItem( otherItem, otherItem === item ? shouldOpen : false );
+        } );
+      } );
+    } );
+  } );
+} )();
+
 /* ===== blog scroll-spy ===== */
 ( function () {
   'use strict';

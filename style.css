@@ -5869,6 +5869,227 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   }
 }
 
+.lumea-home-faq {
+  background: #f7f4ed;
+  color: var(--mustard-text);
+  padding: clamp(4.5rem, 8vw, 7rem) 0;
+  border-top: 0.0625rem solid rgba(42, 35, 24, 0.08);
+}
+
+.lumea-home-faq-inner {
+  width: min(100% - 3rem, var(--mustard-container));
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: start;
+}
+
+.lumea-home-faq-copy {
+  max-width: 28rem;
+}
+
+.lumea-home-faq-kicker {
+  margin: 0 0 0.875rem;
+  font-family: var(--mustard-font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--mustard-accent-dark);
+}
+
+.lumea-home-faq-title {
+  margin: 0;
+  font-family: var(--mustard-font-heading);
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+  color: var(--mustard-text);
+}
+
+.lumea-home-faq-text {
+  margin: 1.25rem 0 0;
+  max-width: 22rem;
+  font-family: var(--mustard-font-body);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--mustard-muted);
+}
+
+.lumea-home-faq-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  font-family: var(--mustard-font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--mustard-text);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.lumea-home-faq-link:hover {
+  gap: 0.75rem;
+  color: var(--mustard-accent-dark);
+}
+
+.lumea-home-faq-list {
+  counter-reset: lumea-home-faq;
+  border-top: 0.0625rem solid rgba(42, 35, 24, 0.18);
+}
+
+.lumea-home-faq-item {
+  counter-increment: lumea-home-faq;
+  border-bottom: 0.0625rem solid rgba(42, 35, 24, 0.14);
+}
+
+.lumea-home-faq-question {
+  width: 100%;
+  min-height: 5.125rem;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) 2rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--mustard-text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.lumea-home-faq-question::before {
+  content: counter(lumea-home-faq, decimal-leading-zero);
+  font-family: var(--mustard-font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(42, 35, 24, 0.35);
+  transition: color 0.2s ease;
+}
+
+.lumea-home-faq-question > span:first-child {
+  font-family: var(--mustard-font-heading);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.lumea-home-faq-icon {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border: 0.0625rem solid rgba(42, 35, 24, 0.22);
+  border-radius: 50%;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lumea-home-faq-icon::before,
+.lumea-home-faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.75rem;
+  height: 0.09375rem;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.lumea-home-faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.lumea-home-faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.24s ease;
+}
+
+.lumea-home-faq-answer-inner {
+  overflow: hidden;
+  padding-left: 3.25rem;
+}
+
+.lumea-home-faq-answer-inner p {
+  margin: 0;
+  max-width: 37rem;
+  padding: 0 0 1.5rem;
+  font-family: var(--mustard-font-body);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--mustard-muted);
+}
+
+.lumea-home-faq-item.is-open .lumea-home-faq-question::before {
+  color: var(--mustard-accent-dark);
+}
+
+.lumea-home-faq-item.is-open .lumea-home-faq-icon {
+  background: var(--mustard-text);
+  border-color: var(--mustard-text);
+  color: #ffffff;
+  transform: rotate(180deg);
+}
+
+.lumea-home-faq-item.is-open .lumea-home-faq-icon::after {
+  opacity: 0;
+}
+
+.lumea-home-faq-item.is-open .lumea-home-faq-answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+@media (max-width: 896px) {
+  .lumea-home-faq-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .lumea-home-faq-copy,
+  .lumea-home-faq-text {
+    max-width: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .lumea-home-faq {
+    padding: 3.5rem 0;
+  }
+
+  .lumea-home-faq-inner {
+    width: min(100% - 2.25rem, var(--mustard-container));
+  }
+
+  .lumea-home-faq-question {
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr) 1.875rem;
+    gap: 0.875rem;
+    padding: 1.125rem 0;
+  }
+
+  .lumea-home-faq-question::before {
+    display: none;
+  }
+
+  .lumea-home-faq-icon {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+  .lumea-home-faq-answer-inner {
+    padding-left: 0;
+  }
+}
+
 .lumea-footer {
   background: #0a0a08;
   color: #faf6ec;
@@ -6063,6 +6284,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   background: #0a0a08;
   overflow: hidden;
   height: clamp(10rem, 22vw, 20rem);
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6122,7 +6344,10 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   }
 
   .lumea-footer-brand-text {
-    font-size: clamp(4rem, 22vw, 8rem);
+    /* Previously clamp(4rem, 22vw, 8rem) — a *higher* vw multiplier
+       than the desktop rule, so on narrow phones "MUSTARD" grew wider
+       than its container and overflow:hidden clipped both sides. */
+    font-size: clamp(3.5rem, 15vw, 7rem);
   }
 }
 
