@@ -1461,7 +1461,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   font-size: clamp(2rem, 3.4vw, 3.25rem);
   font-weight: 600;
   line-height: 0.9;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
 }
 
