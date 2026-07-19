@@ -3429,7 +3429,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 }
 
 .lumea-eos-swiper .swiper-slide {
-  width: 47%;
+  width: 31.3%;
   aspect-ratio: 0.72;
   border-radius: var(--mustard-radius);
   overflow: hidden;

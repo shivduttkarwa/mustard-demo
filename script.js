@@ -3683,7 +3683,7 @@
   if ( ! document.querySelector( '.lumea-eos-swiper' ) ) return;
 
   new Swiper( '.lumea-eos-swiper', {
-    slidesPerView: 2,
+    slidesPerView: 3,
     spaceBetween:  12,
     speed:         500,
     loop:          true,
