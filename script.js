@@ -3630,6 +3630,32 @@
 
 } )();
 
+/* ===== categories.js ===== */
+( function () {
+  'use strict';
+
+  if ( typeof Swiper === 'undefined' ) return;
+  if ( ! document.querySelector( '.lumea-cat-swiper' ) ) return;
+
+  new Swiper( '.lumea-cat-swiper', {
+    slidesPerView: 1.4,
+    spaceBetween:  16,
+    speed:         680,
+    grabCursor:    true,
+
+    navigation: {
+      nextEl: '.lumea-cat-next',
+      prevEl: '.lumea-cat-prev',
+    },
+
+    breakpoints: {
+      600:  { slidesPerView: 2.2, spaceBetween: 16 },
+      1024: { slidesPerView: 4,   spaceBetween: 24 },
+    },
+  } );
+
+} )();
+
 /* ===== eos-sale.js ===== */
 ( function () {
   'use strict';

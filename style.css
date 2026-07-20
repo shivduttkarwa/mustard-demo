@@ -1649,7 +1649,7 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
 .lumea-section-title {
   margin: 0 0 1.125rem;
   font-family: "Clash Display", "Times New Roman", serif;
-  font-size: clamp(2.4375rem, 5.625vw, 5.34375rem);
+  font-size: clamp(2rem, 4.75vw, 4.5rem);
   font-weight: 400;
   line-height: 0.88;
   letter-spacing: -0.065em;
@@ -4370,6 +4370,270 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   .lumea-best-badge {
     font-size: 0.5625rem;
     padding: 0.25rem 0.5rem;
+  }
+}
+
+.lumea-cat-section {
+  background: #ffffff;
+  padding: 0 0 3rem;
+  overflow: hidden;
+}
+
+.lumea-cat-inner {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 5rem;
+}
+
+.lumea-cat-slider-area {
+  position: relative;
+}
+
+.lumea-cat-swiper {
+  overflow: visible;
+}
+
+.lumea-cat-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.lumea-cat-swiper .swiper-slide {
+  height: auto;
+}
+
+.lumea-cat-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--mustard-radius);
+  background: #ffffff;
+  text-decoration: none;
+}
+
+.lumea-cat-media {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.lumea-cat-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  backface-visibility: hidden;
+}
+
+.lumea-cat-img--main {
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.lumea-cat-img--hover {
+  z-index: 2;
+  opacity: 0;
+  background: #ffffff; /* fills object-fit letterbox so main img can't ghost through */
+  transition: opacity 0.5s ease;
+}
+
+/* only hide the main image when a hover image exists AND has finished
+   loading (.is-loaded set by the img onload) — prevents a white flash */
+.lumea-cat-card:hover .lumea-cat-media:has(.lumea-cat-img--hover.is-loaded) .lumea-cat-img--main {
+  opacity: 0;
+}
+
+.lumea-cat-card:hover .lumea-cat-img--hover.is-loaded {
+  opacity: 1;
+}
+
+/* Desktop: curtain-wipe reveal (mirrors .lumea-best-card) */
+@media (hover: hover) and (pointer: fine) {
+  .lumea-cat-img--main {
+    transition:
+      opacity 0.5s ease,
+      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .lumea-cat-img--hover {
+    opacity: 1;
+    -webkit-clip-path: inset(100% 0 0 0);
+    clip-path: inset(100% 0 0 0);
+    transform: scale(1.16);
+    transform-origin: 50% 80%;
+    transition:
+      -webkit-clip-path 0.85s cubic-bezier(0.83, 0, 0.17, 1),
+      clip-path 0.85s cubic-bezier(0.83, 0, 0.17, 1),
+      transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: clip-path, transform;
+  }
+
+  .lumea-cat-card:hover .lumea-cat-media:has(.lumea-cat-img--hover.is-loaded) .lumea-cat-img--main {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+
+  .lumea-cat-card:hover .lumea-cat-img--hover.is-loaded {
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+
+  /* zoom-only fallback when the card has no hover image */
+  .lumea-cat-card:hover .lumea-cat-media:not(:has(.lumea-cat-img--hover)) .lumea-cat-img--main {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumea-cat-img--main,
+  .lumea-cat-img--hover {
+    -webkit-clip-path: none;
+    clip-path: none;
+    transform: none;
+    transition: opacity 0.3s ease;
+    will-change: auto;
+  }
+  .lumea-cat-img--hover { opacity: 0; }
+  .lumea-cat-card:hover .lumea-cat-img--hover.is-loaded { opacity: 1; }
+  .lumea-cat-card:hover .lumea-cat-media:has(.lumea-cat-img--hover.is-loaded) .lumea-cat-img--main {
+    opacity: 0;
+    transform: none;
+  }
+  .lumea-cat-card:hover .lumea-cat-media:not(:has(.lumea-cat-img--hover)) .lumea-cat-img--main {
+    transform: none;
+  }
+}
+
+.lumea-cat-scrim {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  height: 55%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 45%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.lumea-cat-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  padding: 1.25rem 1.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.lumea-cat-name {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Clash Display", "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
+}
+
+.lumea-cat-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.lumea-cat-link svg {
+  transition: transform 0.3s ease;
+}
+
+.lumea-cat-card:hover .lumea-cat-link {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--mustard-text);
+}
+
+.lumea-cat-card:hover .lumea-cat-link svg {
+  transform: translate(0.125rem, -0.125rem);
+}
+
+.lumea-cat-nav {
+  position: absolute;
+  top: 38%;
+  right: -0.75rem;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  pointer-events: none;
+}
+
+.lumea-cat-nav-btn {
+  width: 2.625rem;
+  height: 2.625rem;
+  border: 0.0625rem solid var(--mustard-border);
+  background: var(--mustard-bg);
+  color: var(--mustard-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+}
+
+.lumea-cat-nav-btn:hover {
+  background: var(--mustard-text);
+  color: var(--mustard-bg);
+  border-color: var(--mustard-text);
+}
+
+.lumea-cat-nav-btn.swiper-button-disabled {
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+@media (max-width: 1199px) {
+  .lumea-cat-inner {
+    padding: 0 1.5rem;
+  }
+
+  .lumea-cat-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .lumea-cat-section {
+    padding-bottom: 4rem;
+  }
+
+  .lumea-cat-inner {
+    padding: 0 1.25rem;
+  }
+
+  .lumea-cat-name {
+    font-size: 1.0625rem;
   }
 }
 
