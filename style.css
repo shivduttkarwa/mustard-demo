@@ -1664,80 +1664,6 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   color: rgba(17, 17, 17, 0.5);
 }
 
-/* One-viewport band: intro keeps its natural height, the section below
-   flexes to fill the remainder so intro + section never exceed 90vh.
-   The min-height floor wins on very short screens to protect the layout. */
-.lumea-vh-cap {
-  display: flex;
-  flex-direction: column;
-  background: #ffffff;
-}
-
-@media (min-width: 992px) {
-  .lumea-vh-cap {
-    height: min(90vh, 66rem);
-    min-height: 40rem;
-  }
-
-  .lumea-vh-cap .lumea-section-intro {
-    flex: 0 0 auto;
-    padding: 4rem 0 2.25rem;
-  }
-
-  .lumea-vh-cap .lumea-slider-section {
-    flex: 1 1 auto;
-    height: auto;
-    min-height: 0;
-  }
-
-  /* Bleed follows the stage, not the viewport (was 82vh in a 70vh stage). */
-  .lumea-vh-cap .lumea-slide img,
-  .lumea-vh-cap .lumea-slide .lumea-media-placeholder {
-    height: 117%;
-    max-height: none;
-  }
-
-  /* Anchor the card to the stage bottom so it never clips on short stages. */
-  .lumea-vh-cap .lumea-content-card {
-    top: auto;
-    bottom: 2.75rem;
-  }
-}
-
-/* Short desktop screens: compact the band so 90vh really holds. */
-@media (min-width: 992px) and (max-height: 780px) {
-  .lumea-vh-cap {
-    min-height: 34rem;
-  }
-
-  .lumea-vh-cap .lumea-section-intro {
-    padding: 2.75rem 0 1.75rem;
-  }
-
-  .lumea-vh-cap .lumea-section-title {
-    font-size: clamp(2.25rem, 4.2vw, 3.75rem);
-  }
-
-  .lumea-vh-cap .lumea-content-card {
-    width: min(19rem, 46vw);
-    min-height: 0;
-    bottom: 2rem;
-  }
-
-  .lumea-vh-cap .lumea-card-body {
-    padding: 1.5rem 1.25rem 1.25rem;
-  }
-
-  .lumea-vh-cap .lumea-slide-number {
-    font-size: clamp(3.25rem, 5vw, 5rem);
-    margin-bottom: 1.25rem;
-  }
-
-  .lumea-vh-cap .lumea-card-text {
-    font-size: 0.875rem;
-  }
-}
-
 .lumea-slider-section {
   --mustard-black: #111111;
   --mustard-white: #ffffff;
@@ -1751,6 +1677,47 @@ body.lumea-nav-open .lumea-header-actions > *:not(.lumea-nav-toggle) {
   min-height: 34rem;
   background: #ffffff;
   overflow: hidden;
+}
+
+/* New Arrivals band: intro keeps its default size (untouched at every
+   breakpoint) and the slider flexes to fill whatever remains, so the
+   pair never exceeds one viewport. */
+.lumea-arrivals-band {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+@media (min-width: 992px) {
+  .lumea-arrivals-band {
+    height: min(92vh, 58rem);
+    min-height: 42rem;
+  }
+
+  .lumea-arrivals-band .lumea-section-intro {
+    flex: 0 0 auto;
+  }
+
+  .lumea-arrivals-band .lumea-slider-section {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+  }
+
+  /* Bleed follows the stage's actual (flexed) height, not a fixed vh
+     guess — keeps the crop correct no matter how tall the slider ends up. */
+  .lumea-arrivals-band .lumea-slide img,
+  .lumea-arrivals-band .lumea-slide .lumea-media-placeholder {
+    height: 117%;
+    max-height: none;
+  }
+
+  /* Anchor to the bottom instead of top:38% so the card can never spill
+     past the stage's bottom edge when the stage is short. */
+  .lumea-arrivals-band .lumea-content-card {
+    top: auto;
+    bottom: 1.75rem;
+  }
 }
 
 .lumea-slider-stage {
